@@ -2306,6 +2306,11 @@ export function getAlternativesOf(toolSlug: string): Tool[] {
   return tools.filter((t) => originalIds.includes(t.id));
 }
 
+// 全代替候補数を取得
+export function getTotalAlternativesCount(): number {
+  return alternatives.length;
+}
+
 // ToolWithAlternativesを取得
 export function getToolWithAlternatives(toolSlug: string): ToolWithAlternatives | undefined {
   const tool = getToolBySlug(toolSlug);
