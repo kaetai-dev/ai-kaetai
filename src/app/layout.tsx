@@ -50,15 +50,14 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  other: {
-    'impact-site-verification': '079ea3f9-b640-4b57-becf-6130d1165945',
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" suppressHydrationWarning>
       <head>
+        {/* eslint-disable-next-line @next/next/no-head-element */}
+        <meta name="impact-site-verification" value="079ea3f9-b640-4b57-becf-6130d1165945" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
