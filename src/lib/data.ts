@@ -573,7 +573,7 @@ export const tools: Tool[] = [
     pricingDetail: 'Starterプラン月額$29〜。企業向けプランは要問い合わせ',
     features: ['リアルなAIアバター（230人以上）', '140以上の言語・アクセント対応', 'カスタムアバターの作成', 'プレゼンテーション・研修動画テンプレート', 'スクリーン録画との組み合わせ', 'チーム共同編集機能'],
     officialUrl: 'https://www.synthesia.io',
-    affiliateUrl: '',
+    affiliateUrl: 'https://www.synthesia.io/?via=9a48c2',
     imageUrl: '',
     tags: ['AIアバター', '動画生成', 'エンタープライズ', '多言語', '研修動画'],
     createdAt: '2017-01-01',
