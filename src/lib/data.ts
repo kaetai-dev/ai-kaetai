@@ -1835,6 +1835,24 @@ export const tools: Tool[] = [
     createdAt: '2022-01-01',
     rating: 4.2,
   },
+  {
+    id: 'tool-101',
+    name: 'Genspark',
+    slug: 'genspark',
+    description: 'AIを活用した次世代検索エンジン。複数のAIモデルを組み合わせて、質問に対する包括的な回答をリアルタイムで生成する。',
+    shortDescription: 'AIを活用した次世代検索エンジン。複数のAIモデルで包括的な回答をリアルタイム生成',
+    category: 'データ分析・リサーチ',
+    categorySlug: 'data-research',
+    pricing: 'freemium',
+    pricingDetail: '無料プランあり。Proプラン月額$19.99',
+    features: ['複数AIモデルによる包括的検索', 'リアルタイム情報収集・要約', 'Sparkpagesによる構造化回答', 'ファイルアップロード・分析', '画像生成機能', 'ノーハルシネーション設計'],
+    officialUrl: 'https://www.genspark.ai',
+    affiliateUrl: 'https://mainfuncpteltd.sjv.io/NGzKyK',
+    imageUrl: '',
+    tags: ['AI検索', '検索エンジン', 'リサーチ', '情報収集', '要約'],
+    createdAt: '2024-01-01',
+    rating: 4.3,
+  },
 ];
 
 export const alternatives: Alternative[] = [
