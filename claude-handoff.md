@@ -1,4 +1,5 @@
 # AI Kaetai – Claude引き継ぎプロンプト
+最終更新: 2026-04-11
 
 ## プロジェクト概要
 AI-KAETAI.COM: 日英バイリンガルAIツールディレクトリサイト。アフィリエイト収益モデル。
@@ -14,27 +15,36 @@ AI-KAETAI.COM: 日英バイリンガルAIツールディレクトリサイト。
 - 技術: Next.js 14 + Supabase + Tailwind CSS
 
 ## 完了済み
-- Phase 0: 環境構築 ✅
+- Phase 0: 環境構築 ✅ (ドメイン、GitHub、Vercel、Supabase、PayPal、Cloudflareメール転送)
 - Phase 1: サイト構築・デプロイ ✅
 - Phase 2: 10カテゴリ・100ツール ✅
-- Phase 4一部: GSC登録、GA設置 ✅
-- Phase 3一部: アフィリエイト6件申請/登録 ✅
+- Phase 4一部: GSC登録、GA設置 (G-EE7ZD8HJZV) ✅
+- Phase 3一部: アフィリエイト申請・3件リンク設置済み ✅
 
-## アフィリエイト状況 (2026-04-11時点)
-- Writesonic: Pending (独自)
-- HeyGen: 登録完了 (Rewardful)
-- Synthesia: 登録完了 (Rewardful)
-- ElevenLabs: 登録完了 (PartnerStack, リンク: https://try.elevenlabs.io/gxgtkhgqtmlt)
-- Murf AI: 申請処理待ち (PartnerStack)
-- Descript: 申請済み (PartnerStack)
-- PayPal: 作成済み (報酬受取用)
-- Impact.com: アカウントあり (プロフィール未完成)
-- A8.net/もしも: 登録済み (AI案件少ない)
+## アフィリエイトリンク設置済み (data.ts)
+| ツール | アフィリエイトリンク | コミッション |
+|---|---|---|
+| ElevenLabs | https://try.elevenlabs.io/gxgtkhgqtmlt | 22% recurring 12ヶ月 |
+| HeyGen | https://www.heygen.com/?sid=rewardful&utm_content=creator&utm_medium=affiliate&via=4a199a | 35% x 3ヶ月 |
+| Synthesia | https://www.synthesia.io/?via=9a48c2 | 25% recurring 12ヶ月 |
+
+## 承認待ち
+| ツール | プラットフォーム | 状況 |
+|---|---|---|
+| Writesonic | 独自 (affiliates.writesonic.com) | Pending |
+| Murf AI | PartnerStack | 申請処理待ち |
+| Descript | PartnerStack | 申請済み |
+| Genspark | Impact.com | Sent Invite |
 
 ## 報酬管理画面
 1. Rewardful → HeyGen, Synthesia
 2. PartnerStack (dash.partnerstack.com) → ElevenLabs, Murf AI, Descript
 3. affiliates.writesonic.com → Writesonic
+4. Impact.com → Genspark
+
+## プラットフォーム制限
+- Impact.com: マーケットプレイス拒否済み → ブランド検索不可、直接リンク応募のみ
+- PartnerStack: マーケットプレイスはコミッション1件獲得までロック
 
 ## 開発フロー
 コード編集 → git add -A && git commit -m "..." && git push origin main → Vercel自動ビルド (2-3分)
@@ -42,12 +52,10 @@ AI-KAETAI.COM: 日英バイリンガルAIツールディレクトリサイト。
 ## コミュニケーション
 - 日本語で会話 (技術用語は英語可)
 - ステップバイステップで指示
-- スクショで進捗共有
 - 計画ファイル: ~/ai-kaetai/ai-kaetai-plan.md
 
 ## 次のアクション
-1. アフィリエイト承認確認 (Writesonic, Murf AI, Descript)
-2. Impact.comプロフィール完成 → Jasper応募
-3. 承認済みアフィリエイトリンクをdata.tsに設置
-4. Surfer SEO, Pictory, InVideo, Runway申請
-5. SEOバックリンク開始 (Reddit, Product Hunt, X)
+1. Writesonic / Murf AI / Descript 承認確認 → 承認後リンク設置
+2. SEOバックリンク開始 (Reddit, Product Hunt, X)
+3. サイトデザイン改善
+4. トラフィック増加後にGrammarly / Jasper 再申請
