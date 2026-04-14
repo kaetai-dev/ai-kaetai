@@ -1,16 +1,26 @@
-'use client';
-
 import { notFound } from 'next/navigation';
-import { useState, useCallback } from 'react';
 import Link from 'next/link';
-import { getCategoryBySlug, getToolsByCategory, getAllTools, getAlternativesForTool } from '@/lib/data';
-import { Tool } from '@/types';
+import type { Metadata } from 'next';
+import { getCategoryBySlug, getToolsByCategory, getAllCategories, getAlternativesForTool } from '@/lib/data';
 import Breadcrumb from '@/components/Breadcrumb';
-import SearchBar from '@/components/SearchBar';
-import ToolGrid from '@/components/ToolGrid';
+import CategoryToolsClient from '@/components/CategoryToolsClient';
 
 interface Props {
   params: { slug: string };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const category = getCategoryBySlug(params.slug);
+  if (!category) return {};
+  return {
+    title: `${category.name}のAIツール一覧 | AI Kaetai`,
+    description: category.description,
+  };
+}
+
+export function generateStaticParams() {
+  const categories = getAllCategories();
+  return categories.map((c) => ({ slug: c.slug }));
 }
 
 export default function CategoryPage({ params }: Props) {
@@ -18,11 +28,6 @@ export default function CategoryPage({ params }: Props) {
   if (!category) notFound();
 
   const categoryTools = getToolsByCategory(params.slug);
-  const [filtered, setFiltered] = useState<Tool[]>(categoryTools);
-
-  const handleFilter = useCallback((result: Tool[]) => {
-    setFiltered(result);
-  }, []);
 
   // Build alternative counts
   const alternativeCounts: Record<string, number> = {};
@@ -69,29 +74,12 @@ export default function CategoryPage({ params }: Props) {
         </p>
       </div>
 
-      {/* Search */}
-      <div className="mt-8">
-        <SearchBar
-          tools={categoryTools}
-          onFilter={handleFilter}
-          placeholder={`${category.name}のツールを検索...`}
-        />
-      </div>
-
-      {/* Tools Grid */}
-      <div className="mt-6">
-        <div className="flex items-center justify-between mb-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            {filtered.length}件のツールが見つかりました
-          </p>
-        </div>
-        <ToolGrid
-          tools={filtered}
-          emptyMessage="検索条件に合うツールが見つかりませんでした"
-          showAlternativeCounts
-          alternativeCounts={alternativeCounts}
-        />
-      </div>
+      {/* Search + Tools (Client Component) */}
+      <CategoryToolsClient
+        tools={categoryTools}
+        alternativeCounts={alternativeCounts}
+        categoryName={category.name}
+      />
 
       {/* Popular alternatives in category */}
       {toolsWithAlts.length > 0 && (
