@@ -56,16 +56,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `document.head.insertAdjacentHTML('beforeend', '<meta name="impact-site-verification" content="079ea3f9-b640-4b57-becf-6130d1165945">');` }} />
+        <meta name="impact-site-verification" content="079ea3f9-b640-4b57-becf-6130d1165945" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                var stored = localStorage.getItem('theme');
-                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (stored === 'dark' || (!stored && prefersDark)) {
-                  document.documentElement.classList.add('dark');
-                }
+                try {
+                  var stored = localStorage.getItem('theme');
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (stored === 'dark' || (!stored && prefersDark)) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e) {}
               })();
             `,
           }}
