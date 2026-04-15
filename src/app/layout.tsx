@@ -95,6 +95,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Script>
           </>
         )}
+
+        {/* GoatCounter Analytics */}
+        <script
+          data-goatcounter="https://nightclaw.goatcounter.com/count"
+          async
+          src="//gc.zgo.at/count.js"
+        />
       </body>
     </html>
   );
