@@ -773,7 +773,7 @@ export const tools: Tool[] = [
     pricingDetail: '無料プランあり（月10分）。Basicプラン月額$29〜',
     features: ['120以上の音声・20以上の言語対応', '感情・アクセント・話速のカスタマイズ', '動画・スライドへのナレーション追加', 'Google Slides統合', 'チーム共同作業機能', '商用利用ライセンスあり'],
     officialUrl: 'https://murf.ai',
-    affiliateUrl: '',
+    affiliateUrl: 'https://get.murf.ai/jv7rq12tfkes',
     imageUrl: '',
     tags: ['AIナレーション', '音声合成', 'TTS', 'eラーニング', '動画ナレーション'],
     createdAt: '2020-05-01',
