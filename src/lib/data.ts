@@ -155,7 +155,7 @@ export const tools: Tool[] = [
     pricingDetail: '無料プランあり（月10,000文字）。Unlimitedプラン月額$9',
     features: ['40種以上のライティングユースケース', '30以上の言語対応', 'トーン設定（フォーマル・カジュアル等）', 'ブラウザ拡張機能あり', 'SEOアナライザー機能', 'チーム共有機能'],
     officialUrl: 'https://rytr.me',
-    affiliateUrl: '',
+    affiliateUrl: 'https://rytr.me/?via=miku',
     imageUrl: '',
     tags: ['AIライティング', '低価格', 'コンテンツ生成', '多言語'],
     createdAt: '2021-04-01',
