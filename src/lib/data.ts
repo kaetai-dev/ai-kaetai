@@ -1,16 +1,16 @@
 import { Tool, Category, Alternative, ToolWithAlternatives } from '@/types';
 
 export const categories: Category[] = [
-  { id: 'cat-1', name: '文章生成（ライティング）', slug: 'writing', description: 'ブログ記事、コピーライティング、メールなど文章を生成・改善するAIツール', icon: '✍️', toolCount: 10 },
-  { id: 'cat-2', name: '画像生成', slug: 'image', description: 'テキストプロンプトから高品質な画像やアートを生成するAIツール', icon: '🎨', toolCount: 10 },
-  { id: 'cat-3', name: '動画生成', slug: 'video', description: 'テキストや画像から動画コンテンツを生成・編集するAIツール', icon: '🎬', toolCount: 10 },
-  { id: 'cat-4', name: '音楽・音声生成', slug: 'audio', description: '音楽生成、音声合成、ナレーション制作を支援するAIツール', icon: '🎵', toolCount: 10 },
-  { id: 'cat-5', name: 'コーディング支援', slug: 'coding', description: 'コード補完、バグ修正、ソフトウェア開発を支援するAIツール', icon: '💻', toolCount: 10 },
-  { id: 'cat-6', name: 'チャットボット・会話AI', slug: 'chatbot', description: '自然な会話ができる汎用AIアシスタント・チャットボットツール', icon: '💬', toolCount: 10 },
-  { id: 'cat-7', name: 'SEO・マーケティング', slug: 'seo-marketing', description: 'SEO分析、広告最適化、コンテンツマーケティングを支援するAIツール', icon: '📊', toolCount: 10 },
-  { id: 'cat-8', name: 'ビジネス・生産性', slug: 'business', description: '業務効率化、プロジェクト管理、会議サポートなどビジネスを支援するAIツール', icon: '💼', toolCount: 10 },
-  { id: 'cat-9', name: 'デザイン・UI', slug: 'design', description: 'ロゴ制作、UIデザイン、ウェブサイト制作を支援するAIツール', icon: '🎭', toolCount: 10 },
-  { id: 'cat-10', name: 'データ分析・リサーチ', slug: 'data-research', description: 'データ分析、可視化、学術リサーチを支援するAIツール', icon: '🔬', toolCount: 10 },
+  { id: 'cat-1', name: '文章生成（ライティング）', slug: 'writing', description: 'ブログ記事、コピーライティング、メールなど文章を生成・改善するAIツール', icon: 'PenTool', toolCount: 10 },
+  { id: 'cat-2', name: '画像生成', slug: 'image', description: 'テキストプロンプトから高品質な画像やアートを生成するAIツール', icon: 'Palette', toolCount: 10 },
+  { id: 'cat-3', name: '動画生成', slug: 'video', description: 'テキストや画像から動画コンテンツを生成・編集するAIツール', icon: 'Video', toolCount: 10 },
+  { id: 'cat-4', name: '音楽・音声生成', slug: 'audio', description: '音楽生成、音声合成、ナレーション制作を支援するAIツール', icon: 'Music', toolCount: 10 },
+  { id: 'cat-5', name: 'コーディング支援', slug: 'coding', description: 'コード補完、バグ修正、ソフトウェア開発を支援するAIツール', icon: 'Code', toolCount: 10 },
+  { id: 'cat-6', name: 'チャットボット・会話AI', slug: 'chatbot', description: '自然な会話ができる汎用AIアシスタント・チャットボットツール', icon: 'MessageCircle', toolCount: 10 },
+  { id: 'cat-7', name: 'SEO・マーケティング', slug: 'seo-marketing', description: 'SEO分析、広告最適化、コンテンツマーケティングを支援するAIツール', icon: 'BarChart3', toolCount: 10 },
+  { id: 'cat-8', name: 'ビジネス・生産性', slug: 'business', description: '業務効率化、プロジェクト管理、会議サポートなどビジネスを支援するAIツール', icon: 'Briefcase', toolCount: 10 },
+  { id: 'cat-9', name: 'デザイン・UI', slug: 'design', description: 'ロゴ制作、UIデザイン、ウェブサイト制作を支援するAIツール', icon: 'Layers', toolCount: 10 },
+  { id: 'cat-10', name: 'データ分析・リサーチ', slug: 'data-research', description: 'データ分析、可視化、学術リサーチを支援するAIツール', icon: 'Database', toolCount: 10 },
 ];
 
 export const tools: Tool[] = [

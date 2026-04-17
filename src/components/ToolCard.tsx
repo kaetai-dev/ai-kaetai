@@ -51,7 +51,7 @@ function ToolImagePlaceholder({ tool }: { tool: Tool }) {
 
 export default function ToolCard({ tool, showAlternativeCount, alternativeCount }: ToolCardProps) {
   return (
-    <div className="group bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-lg hover:border-indigo-200 dark:hover:border-indigo-800 transition-all duration-200">
+    <div className="group bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-lg hover:border-cyan-400 dark:hover:border-cyan-600 transition-all duration-200">
       {/* Image */}
       <div className="h-32 w-full overflow-hidden">
         {tool.imageUrl ? (
@@ -117,7 +117,7 @@ export default function ToolCard({ tool, showAlternativeCount, alternativeCount 
         {/* CTA */}
         <Link
           href={`/tools/${tool.slug}`}
-          className="block w-full text-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-white dark:hover:text-white bg-indigo-50 dark:bg-indigo-900/30 hover:bg-indigo-600 dark:hover:bg-indigo-600 border border-indigo-200 dark:border-indigo-800 hover:border-indigo-600 rounded-lg py-2 transition-all duration-200"
+          className="block w-full text-center text-sm font-medium text-cyan-600 dark:text-cyan-400 hover:text-white dark:hover:text-white bg-cyan-50 dark:bg-cyan-900/30 hover:bg-cyan-600 dark:hover:bg-cyan-600 border border-cyan-200 dark:border-cyan-800 hover:border-cyan-600 rounded-lg py-2 transition-all duration-200 hover:-translate-y-px hover:shadow"
         >
           詳細を見る
         </Link>
