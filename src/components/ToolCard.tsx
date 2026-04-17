@@ -1,52 +1,12 @@
 import Link from 'next/link';
 import { Tool } from '@/types';
 import PricingBadge from './PricingBadge';
+import ToolFaviconImage from './ToolFaviconImage';
 
 interface ToolCardProps {
   tool: Tool;
   showAlternativeCount?: boolean;
   alternativeCount?: number;
-}
-
-const gradientColors: Record<string, string> = {
-  chatgpt: 'from-emerald-400 to-teal-600',
-  claude: 'from-orange-400 to-amber-600',
-  gemini: 'from-blue-400 to-indigo-600',
-  midjourney: 'from-violet-400 to-purple-700',
-  'stable-diffusion': 'from-pink-400 to-rose-600',
-  'dall-e': 'from-cyan-400 to-sky-600',
-  'github-copilot': 'from-gray-700 to-gray-900',
-  cursor: 'from-indigo-400 to-violet-600',
-  tabnine: 'from-blue-500 to-cyan-600',
-  runway: 'from-red-400 to-pink-600',
-  descript: 'from-green-400 to-emerald-600',
-  pika: 'from-yellow-400 to-orange-500',
-  suno: 'from-purple-400 to-fuchsia-600',
-  elevenlabs: 'from-orange-400 to-red-600',
-  udio: 'from-teal-400 to-cyan-600',
-  jasper: 'from-rose-400 to-pink-600',
-  'copy-ai': 'from-violet-400 to-indigo-600',
-  'notion-ai': 'from-gray-400 to-slate-600',
-  perplexity: 'from-sky-400 to-blue-600',
-  'adobe-firefly': 'from-red-400 to-orange-600',
-};
-
-function ToolImagePlaceholder({ tool }: { tool: Tool }) {
-  const gradient = gradientColors[tool.slug] || 'from-indigo-400 to-indigo-600';
-  const initials = tool.name
-    .split(/[\s.]+/)
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join('')
-    .toUpperCase();
-
-  return (
-    <div
-      className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${gradient} rounded-lg`}
-    >
-      <span className="text-2xl font-bold text-white select-none">{initials}</span>
-    </div>
-  );
 }
 
 export default function ToolCard({ tool, showAlternativeCount, alternativeCount }: ToolCardProps) {
@@ -62,7 +22,7 @@ export default function ToolCard({ tool, showAlternativeCount, alternativeCount 
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
           />
         ) : (
-          <ToolImagePlaceholder tool={tool} />
+          <ToolFaviconImage tool={tool} />
         )}
       </div>
 
