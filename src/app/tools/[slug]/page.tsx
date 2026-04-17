@@ -10,6 +10,7 @@ import {
 import Breadcrumb from '@/components/Breadcrumb';
 import PricingBadge from '@/components/PricingBadge';
 import ToolGrid from '@/components/ToolGrid';
+import ToolFaviconImage from '@/components/ToolFaviconImage';
 
 interface Props {
   params: { slug: string };
@@ -35,43 +36,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const gradientColors: Record<string, string> = {
-  chatgpt: 'from-emerald-400 to-teal-600',
-  claude: 'from-orange-400 to-amber-600',
-  gemini: 'from-blue-400 to-indigo-600',
-  midjourney: 'from-violet-400 to-purple-700',
-  'stable-diffusion': 'from-pink-400 to-rose-600',
-  'dall-e': 'from-cyan-400 to-sky-600',
-  'github-copilot': 'from-gray-700 to-gray-900',
-  cursor: 'from-indigo-400 to-violet-600',
-  tabnine: 'from-blue-500 to-cyan-600',
-  runway: 'from-red-400 to-pink-600',
-  descript: 'from-green-400 to-emerald-600',
-  pika: 'from-yellow-400 to-orange-500',
-  suno: 'from-purple-400 to-fuchsia-600',
-  elevenlabs: 'from-orange-400 to-red-600',
-  udio: 'from-teal-400 to-cyan-600',
-  jasper: 'from-rose-400 to-pink-600',
-  'copy-ai': 'from-violet-400 to-indigo-600',
-  'notion-ai': 'from-gray-400 to-slate-600',
-  perplexity: 'from-sky-400 to-blue-600',
-  'adobe-firefly': 'from-red-400 to-orange-600',
-};
-
 export default function ToolDetailPage({ params }: Props) {
   const tool = getToolBySlug(params.slug);
   if (!tool) notFound();
 
   const alternatives = getAlternativesForTool(params.slug);
   const alternativeOf = getAlternativesOf(params.slug);
-
-  const gradient = gradientColors[tool.slug] || 'from-indigo-400 to-indigo-600';
-  const initials = tool.name
-    .split(/[\s.]+/)
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join('')
-    .toUpperCase();
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -115,10 +85,8 @@ export default function ToolDetailPage({ params }: Props) {
 
         {/* Hero */}
         <div className="mt-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
-          <div className={`h-48 md:h-64 bg-gradient-to-br ${gradient} flex items-center justify-center`}>
-            <div className="text-6xl md:text-8xl font-extrabold text-white/90 select-none">
-              {initials}
-            </div>
+          <div className="h-48 md:h-64">
+            <ToolFaviconImage tool={tool} />
           </div>
 
           <div className="p-6 md:p-8">
