@@ -7,10 +7,10 @@ import {
   getAlternativesForTool,
   getAlternativesOf,
 } from '@/lib/data';
-import Breadcrumb from '@/components/Breadcrumb';
 import PricingBadge from '@/components/PricingBadge';
 import ToolGrid from '@/components/ToolGrid';
-import ToolFaviconImage from '@/components/ToolFaviconImage';
+import ToolFaviconIcon from '@/components/ToolFaviconIcon';
+import { DollarSign, Zap, Globe, Star } from 'lucide-react';
 
 interface Props {
   params: { slug: string };
@@ -36,6 +36,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const HERO_STYLE = { background: 'linear-gradient(135deg, #0f172a 0%, #0c4a6e 50%, #0891b2 100%)' };
+const GRID_STYLE = {
+  backgroundImage: `linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)`,
+  backgroundSize: '40px 40px',
+};
+
 export default function ToolDetailPage({ params }: Props) {
   const tool = getToolBySlug(params.slug);
   if (!tool) notFound();
@@ -57,12 +63,7 @@ export default function ToolDetailPage({ params }: Props) {
       availability: 'https://schema.org/InStock',
     },
     aggregateRating: tool.rating
-      ? {
-          '@type': 'AggregateRating',
-          ratingValue: tool.rating,
-          bestRating: 5,
-          worstRating: 1,
-        }
+      ? { '@type': 'AggregateRating', ratingValue: tool.rating, bestRating: 5, worstRating: 1 }
       : undefined,
   };
 
@@ -73,98 +74,96 @@ export default function ToolDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Breadcrumb */}
-        <Breadcrumb
-          items={[
-            { label: 'ホーム', href: '/' },
-            { label: tool.category, href: `/categories/${tool.categorySlug}` },
-            { label: tool.name },
-          ]}
-        />
+      {/* Full-width gradient hero */}
+      <section className="relative overflow-hidden" style={HERO_STYLE}>
+        <div className="absolute inset-0 pointer-events-none opacity-10" style={GRID_STYLE} />
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Hero */}
-        <div className="mt-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
-          <div className="h-48 md:h-64">
-            <ToolFaviconImage tool={tool} />
-          </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Breadcrumb */}
+          <nav className="text-sm text-blue-200/70 mb-8 flex items-center gap-2 flex-wrap">
+            <Link href="/" className="hover:text-white transition-colors">ホーム</Link>
+            <span>/</span>
+            <Link href={`/categories/${tool.categorySlug}`} className="hover:text-white transition-colors">
+              {tool.category}
+            </Link>
+            <span>/</span>
+            <span className="text-white font-medium">{tool.name}</span>
+          </nav>
 
-          <div className="p-6 md:p-8">
-            <div className="flex flex-wrap items-center gap-3 mb-3">
-              <Link
-                href={`/categories/${tool.categorySlug}`}
-                className="inline-flex items-center rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium px-3 py-1 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors"
-              >
-                {tool.category}
-              </Link>
-              <PricingBadge pricing={tool.pricing} size="md" />
-              {tool.rating && (
-                <div className="flex items-center gap-1">
-                  <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    {tool.rating.toFixed(1)}
-                  </span>
-                </div>
-              )}
+          <div className="flex flex-col sm:flex-row sm:items-start gap-6 animate-fadeInUp">
+            {/* Favicon box */}
+            <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/20">
+              <ToolFaviconIcon officialUrl={tool.officialUrl} name={tool.name} imgClassName="w-12 h-12 object-contain rounded-lg" />
             </div>
 
-            <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
-              {tool.name}
-            </h1>
-            <p className="mt-3 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-              {tool.shortDescription}
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <a
-                href={tool.officialUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold px-6 py-3 rounded-xl border border-gray-200 dark:border-gray-700 transition-colors"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-                公式サイトへ
-              </a>
-              <a
-                href={tool.affiliateUrl}
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg shadow-indigo-200 dark:shadow-indigo-900/30"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-                詳細・購入はこちら
-              </a>
-            </div>
-
-            {/* Tags */}
-            <div className="mt-4 flex flex-wrap gap-2">
-              {tool.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs font-medium px-2.5 py-1"
+            <div className="flex-1">
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <Link
+                  href={`/categories/${tool.categorySlug}`}
+                  className="inline-flex items-center rounded-full bg-white/10 text-cyan-200 text-sm font-medium px-3 py-1 border border-white/20 hover:bg-white/20 transition-colors"
                 >
-                  #{tag}
-                </span>
-              ))}
+                  {tool.category}
+                </Link>
+                <PricingBadge pricing={tool.pricing} size="md" />
+                {tool.rating && (
+                  <div className="flex items-center gap-1 bg-white/10 rounded-full px-2.5 py-1 border border-white/20">
+                    <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
+                    <span className="text-sm font-semibold text-white">{tool.rating.toFixed(1)}</span>
+                  </div>
+                )}
+              </div>
+
+              <h1 className="text-3xl md:text-4xl font-extrabold text-white">{tool.name}</h1>
+              <p className="mt-3 text-lg text-blue-100 leading-relaxed max-w-2xl">
+                {tool.shortDescription}
+              </p>
+
+              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                <a
+                  href={tool.officialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl border border-white/30 transition-all hover:-translate-y-0.5"
+                >
+                  <Globe className="w-4 h-4" />
+                  公式サイトへ
+                </a>
+                <a
+                  href={tool.affiliateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3 rounded-xl transition-all shadow-lg hover:-translate-y-0.5 text-white"
+                  style={{ background: 'linear-gradient(135deg, #0891b2, #0e7490)' }}
+                >
+                  詳細・購入はこちら
+                </a>
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {tool.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center rounded-full bg-white/10 text-blue-200 text-xs font-medium px-2.5 py-1 border border-white/10"
+                  >
+                    #{tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Content Grid */}
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
+      {/* Content Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main */}
           <div className="lg:col-span-2 space-y-8">
             {/* Description */}
-            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8 animate-fadeInUp">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+                <span className="block w-1 h-6 rounded-full bg-cyan-500 flex-shrink-0" />
                 {tool.name}とは
               </h2>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
@@ -173,17 +172,16 @@ export default function ToolDetailPage({ params }: Props) {
             </div>
 
             {/* Features */}
-            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">主な機能</h2>
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8 animate-fadeInUp-delay-1">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+                <span className="block w-1 h-6 rounded-full bg-cyan-500 flex-shrink-0" />
+                <Zap className="w-5 h-5 text-cyan-500" />
+                主な機能
+              </h2>
               <ul className="space-y-3">
                 {tool.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <svg
-                      className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
+                    <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     <span className="text-gray-700 dark:text-gray-300">{feature}</span>
@@ -194,14 +192,15 @@ export default function ToolDetailPage({ params }: Props) {
 
             {/* Alternatives */}
             {alternatives.length > 0 && (
-              <div>
+              <div className="animate-fadeInUp-delay-2">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+                    <span className="block w-1 h-6 rounded-full bg-cyan-500 flex-shrink-0" />
                     {tool.name}の代替ツール
                   </h2>
                   <Link
                     href={`/alternatives/${tool.slug}`}
-                    className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 flex items-center gap-1"
+                    className="text-sm font-medium text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 flex items-center gap-1"
                   >
                     すべて見る
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -215,8 +214,9 @@ export default function ToolDetailPage({ params }: Props) {
 
             {/* Alternative Of */}
             {alternativeOf.length > 0 && (
-              <div>
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
+              <div className="animate-fadeInUp-delay-3">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+                  <span className="block w-1 h-6 rounded-full bg-cyan-500 flex-shrink-0" />
                   {tool.name}が代替となるツール
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">
@@ -230,8 +230,11 @@ export default function ToolDetailPage({ params }: Props) {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Pricing */}
-            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">料金プラン</h3>
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 animate-fadeInUp">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                <DollarSign className="w-5 h-5 text-cyan-500" />
+                料金プラン
+              </h3>
               <div className="space-y-3">
                 <PricingBadge pricing={tool.pricing} size="md" />
                 <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -242,20 +245,24 @@ export default function ToolDetailPage({ params }: Props) {
                 href={tool.affiliateUrl}
                 target="_blank"
                 rel="noopener noreferrer sponsored"
-                className="mt-4 block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2.5 rounded-lg transition-colors text-sm"
+                className="mt-4 block w-full text-center text-white font-semibold px-4 py-2.5 rounded-lg transition-all text-sm hover:-translate-y-0.5 hover:shadow"
+                style={{ background: 'linear-gradient(135deg, #0891b2, #0e7490)' }}
               >
                 料金を確認する
               </a>
             </div>
 
             {/* Official site */}
-            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">公式情報</h3>
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 animate-fadeInUp-delay-1">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                <Globe className="w-5 h-5 text-cyan-500" />
+                公式情報
+              </h3>
               <a
                 href={tool.officialUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
               >
                 <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -265,7 +272,7 @@ export default function ToolDetailPage({ params }: Props) {
             </div>
 
             {/* Disclosure */}
-            <div className="bg-amber-50 dark:bg-amber-900/10 rounded-2xl border border-amber-200 dark:border-amber-900/30 p-4">
+            <div className="bg-amber-50 dark:bg-amber-900/10 rounded-2xl border border-amber-200 dark:border-amber-900/30 p-4 animate-fadeInUp-delay-2">
               <p className="text-xs text-amber-800 dark:text-amber-400 leading-relaxed">
                 ※ 「詳細・購入はこちら」はアフィリエイトリンクです。購入された場合、当サイトに報酬が発生することがありますが、掲載内容に影響はありません。
               </p>

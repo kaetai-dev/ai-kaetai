@@ -1,29 +1,13 @@
 import Link from 'next/link';
-import {
-  PenTool, Palette, Video, Music, Code, MessageCircle,
-  BarChart3, Briefcase, Layers, Database, LucideIcon,
-} from 'lucide-react';
+import { getCategoryIcon } from '@/lib/categoryIcons';
 import { Category } from '@/types';
-
-const iconMap: Record<string, LucideIcon> = {
-  PenTool,
-  Palette,
-  Video,
-  Music,
-  Code,
-  MessageCircle,
-  BarChart3,
-  Briefcase,
-  Layers,
-  Database,
-};
 
 interface CategoryCardProps {
   category: Category;
 }
 
 export default function CategoryCard({ category }: CategoryCardProps) {
-  const Icon = iconMap[category.icon] ?? Layers;
+  const Icon = getCategoryIcon(category.icon);
 
   return (
     <Link
