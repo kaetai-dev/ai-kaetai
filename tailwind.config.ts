@@ -41,6 +41,10 @@ const config: Config = {
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.3s ease-out',
+        'fadeInUp': 'fadeInUp 0.5s ease-out both',
+        'fadeInUp-delay-1': 'fadeInUp 0.5s ease-out 0.1s both',
+        'fadeInUp-delay-2': 'fadeInUp 0.5s ease-out 0.2s both',
+        'fadeInUp-delay-3': 'fadeInUp 0.5s ease-out 0.3s both',
       },
       keyframes: {
         fadeIn: {
@@ -51,9 +55,19 @@ const config: Config = {
           '0%': { transform: 'translateY(10px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
     },
   },
+  safelist: [
+    'animate-fadeInUp',
+    'animate-fadeInUp-delay-1',
+    'animate-fadeInUp-delay-2',
+    'animate-fadeInUp-delay-3',
+  ],
   plugins: [],
 };
 
