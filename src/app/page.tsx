@@ -8,6 +8,7 @@ import {
 } from '@/lib/data';
 import CategoryCard from '@/components/CategoryCard';
 import ToolGrid from '@/components/ToolGrid';
+import HeroSearch from '@/components/HeroSearch';
 
 export const metadata: Metadata = {
   title: 'AI Kaetai - AIツールの代替を日本語で探す',
@@ -143,6 +144,13 @@ export default function HomePage() {
               <div className="text-xs text-cyan-300 mt-1 font-medium">代替候補数</div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Hero Search Bar */}
+      <section className="bg-gray-50 dark:bg-gray-900 py-8 border-b border-gray-100 dark:border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <HeroSearch tools={allTools} />
         </div>
       </section>
 
