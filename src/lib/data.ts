@@ -594,7 +594,7 @@ export const tools: Tool[] = [
     pricingDetail: '無料プランあり（ウォーターマーク付き）。Businessプラン月額$30〜',
     features: ['テキスト・URLから動画の自動生成', '5,000以上のテンプレート', 'AI自動ナレーション・字幕付与', '8M以上のストック素材ライブラリ', 'SNS向けサイズ自動調整', '多言語ナレーション対応'],
     officialUrl: 'https://invideo.io',
-    affiliateUrl: '',
+    affiliateUrl: 'https://invideo.sjv.io/OYn2Vn',
     imageUrl: '',
     tags: ['動画生成', 'テキストから動画', 'SNS動画', '自動化'],
     createdAt: '2017-01-01',
