@@ -74,6 +74,7 @@ export interface ToolCombination {
   slug: string;
   title: string;
   description: string;
+  longDescription: string;
   toolA: string;
   toolASlug: string;
   toolB: string;

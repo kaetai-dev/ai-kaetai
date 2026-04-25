@@ -150,7 +150,7 @@ export default function HomePage() {
       </section>
 
       {/* Hero Search Bar */}
-      <section className="bg-gray-50 dark:bg-gray-900 py-8 border-b border-gray-100 dark:border-gray-800">
+      <section className="bg-gray-50 py-8 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <HeroSearch tools={allTools} />
         </div>
@@ -206,14 +206,14 @@ export default function HomePage() {
       </section>
 
       {/* Categories Section */}
-      <section id="categories" className="bg-white dark:bg-gray-950 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section id="categories" className="bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 flex items-center gap-3">
               <span className="block w-1 h-8 rounded-full bg-cyan-500 flex-shrink-0" />
               カテゴリから探す
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 mt-1 ml-4">
+            <p className="text-gray-600 mt-1 ml-4">
               使いたい用途のカテゴリを選んで代替ツールを探しましょう
             </p>
           </div>
@@ -226,13 +226,13 @@ export default function HomePage() {
       </section>
 
       {/* Popular Alternatives Section */}
-      <section className="bg-gray-50 dark:bg-gray-900/50 border-y border-gray-100 dark:border-gray-800 py-12">
+      <section className="bg-gray-50 border-y border-gray-100 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-3">
             <span className="block w-1 h-8 rounded-full bg-cyan-500 flex-shrink-0" />
             よく検索される代替候補
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 ml-4">
+          <p className="text-gray-600 mb-6 ml-4">
             ユーザーが特に関心を持つAIツールの代替をチェック
           </p>
           <div className="flex flex-wrap gap-3">
@@ -240,7 +240,7 @@ export default function HomePage() {
               <Link
                 key={alt.slug}
                 href={`/alternatives/${alt.slug}`}
-                className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-900 hover:bg-cyan-600 dark:hover:bg-cyan-600 text-gray-700 dark:text-gray-300 hover:text-white dark:hover:text-white text-sm font-medium px-4 py-2 rounded-full border border-gray-200 dark:border-gray-700 hover:border-cyan-600 dark:hover:border-cyan-600 transition-all shadow-sm hover:-translate-y-0.5 hover:shadow"
+                className="inline-flex items-center gap-1.5 bg-white hover:bg-cyan-600 text-gray-700 hover:text-white text-sm font-medium px-4 py-2 rounded-full border border-gray-200 hover:border-cyan-600 transition-all shadow-sm hover:-translate-y-0.5 hover:shadow"
               >
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
@@ -253,14 +253,14 @@ export default function HomePage() {
       </section>
 
       {/* New Tools Section */}
-      <section className="bg-white dark:bg-gray-950 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 flex items-center gap-3">
               <span className="block w-1 h-8 rounded-full bg-cyan-500 flex-shrink-0" />
               新着ツール
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 mt-1 ml-4">
+            <p className="text-gray-600 mt-1 ml-4">
               最近追加されたAIツールをチェック
             </p>
           </div>

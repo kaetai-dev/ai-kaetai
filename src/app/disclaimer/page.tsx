@@ -17,17 +17,17 @@ export default function DisclaimerPage() {
       <Breadcrumb items={[{ label: 'ホーム', href: '/' }, { label: '免責事項' }]} />
 
       <div className="mt-6">
-        <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">
+        <h1 className="text-3xl font-extrabold text-gray-900 mb-2">
           免責事項・プライバシーポリシー
         </h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">
+        <p className="text-sm text-gray-500 mb-8">
           最終更新日：2026年4月
         </p>
 
-        <div className="space-y-10 text-gray-700 dark:text-gray-300">
+        <div className="space-y-10 text-gray-700">
           {/* アフィリエイト広告 */}
           <section>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 pb-2 border-b border-gray-200 dark:border-gray-800">
+            <h2 className="text-xl font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200">
               アフィリエイト広告について
             </h2>
             <p className="leading-relaxed mb-3">
@@ -54,7 +54,7 @@ export default function DisclaimerPage() {
 
           {/* 情報の正確性 */}
           <section>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 pb-2 border-b border-gray-200 dark:border-gray-800">
+            <h2 className="text-xl font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200">
               情報の正確性について
             </h2>
             <p className="leading-relaxed mb-3">
@@ -70,7 +70,7 @@ export default function DisclaimerPage() {
 
           {/* 外部リンク */}
           <section>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 pb-2 border-b border-gray-200 dark:border-gray-800">
+            <h2 className="text-xl font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200">
               外部リンクについて
             </h2>
             <p className="leading-relaxed">
@@ -82,7 +82,7 @@ export default function DisclaimerPage() {
 
           {/* 著作権 */}
           <section>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 pb-2 border-b border-gray-200 dark:border-gray-800">
+            <h2 className="text-xl font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200">
               著作権について
             </h2>
             <p className="leading-relaxed mb-3">
@@ -97,10 +97,10 @@ export default function DisclaimerPage() {
 
           {/* プライバシーポリシー */}
           <section>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 pb-2 border-b border-gray-200 dark:border-gray-800">
+            <h2 className="text-xl font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200">
               プライバシーポリシー
             </h2>
-            <h3 className="text-base font-semibold text-gray-900 dark:text-white mt-4 mb-2">
+            <h3 className="text-base font-semibold text-gray-900 mt-4 mb-2">
               収集する情報
             </h3>
             <p className="leading-relaxed mb-3">
@@ -108,14 +108,14 @@ export default function DisclaimerPage() {
               収集される情報にはIPアドレス、ブラウザ情報、ページ閲覧履歴等が含まれますが、
               個人を特定できる情報は収集していません。
             </p>
-            <h3 className="text-base font-semibold text-gray-900 dark:text-white mt-4 mb-2">
+            <h3 className="text-base font-semibold text-gray-900 mt-4 mb-2">
               Cookieの使用
             </h3>
             <p className="leading-relaxed mb-3">
               当サイトでは、利便性向上（ダークモード設定の保存等）のためにCookieおよびローカルストレージを使用することがあります。
               ブラウザの設定からCookieを無効にすることができますが、一部機能が正常に動作しない場合があります。
             </p>
-            <h3 className="text-base font-semibold text-gray-900 dark:text-white mt-4 mb-2">
+            <h3 className="text-base font-semibold text-gray-900 mt-4 mb-2">
               Google Analyticsについて
             </h3>
             <p className="leading-relaxed">
@@ -128,7 +128,7 @@ export default function DisclaimerPage() {
 
           {/* 免責事項 */}
           <section>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 pb-2 border-b border-gray-200 dark:border-gray-800">
+            <h2 className="text-xl font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200">
               免責事項
             </h2>
             <p className="leading-relaxed mb-3">
@@ -145,31 +145,31 @@ export default function DisclaimerPage() {
 
           {/* 運営者情報 */}
           <section>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 pb-2 border-b border-gray-200 dark:border-gray-800">
+            <h2 className="text-xl font-bold text-gray-900 mb-3 pb-2 border-b border-gray-200">
               運営者情報
             </h2>
             <dl className="space-y-2 text-sm">
               <div className="flex gap-4">
-                <dt className="w-28 flex-shrink-0 font-medium text-gray-900 dark:text-white">サイト名</dt>
+                <dt className="w-28 flex-shrink-0 font-medium text-gray-900">サイト名</dt>
                 <dd>AI Kaetai（AIかえたい）</dd>
               </div>
               <div className="flex gap-4">
-                <dt className="w-28 flex-shrink-0 font-medium text-gray-900 dark:text-white">URL</dt>
+                <dt className="w-28 flex-shrink-0 font-medium text-gray-900">URL</dt>
                 <dd>
                   <a
                     href="https://ai-kaetai.com"
-                    className="text-indigo-600 dark:text-indigo-400 hover:underline"
+                    className="text-indigo-600 hover:underline"
                   >
                     https://ai-kaetai.com
                   </a>
                 </dd>
               </div>
               <div className="flex gap-4">
-                <dt className="w-28 flex-shrink-0 font-medium text-gray-900 dark:text-white">コンセプト</dt>
+                <dt className="w-28 flex-shrink-0 font-medium text-gray-900">コンセプト</dt>
                 <dd>AIツールの代替を日本語で比較・検索できるディレクトリ</dd>
               </div>
               <div className="flex gap-4">
-                <dt className="w-28 flex-shrink-0 font-medium text-gray-900 dark:text-white">収益モデル</dt>
+                <dt className="w-28 flex-shrink-0 font-medium text-gray-900">収益モデル</dt>
                 <dd>アフィリエイト広告（ユーザーとの金銭取引なし）</dd>
               </div>
             </dl>

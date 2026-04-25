@@ -161,19 +161,19 @@ export default function ToolDetailPage({ params }: Props) {
           {/* Main */}
           <div className="lg:col-span-2 space-y-8">
             {/* Description */}
-            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8 animate-fadeInUp">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 animate-fadeInUp">
+              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-3">
                 <span className="block w-1 h-6 rounded-full bg-cyan-500 flex-shrink-0" />
                 {tool.name}とは
               </h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
+              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
                 {tool.description}
               </p>
             </div>
 
             {/* Features */}
-            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8 animate-fadeInUp-delay-1">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 animate-fadeInUp-delay-1">
+              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-3">
                 <span className="block w-1 h-6 rounded-full bg-cyan-500 flex-shrink-0" />
                 <Zap className="w-5 h-5 text-cyan-500" />
                 主な機能
@@ -184,7 +184,7 @@ export default function ToolDetailPage({ params }: Props) {
                     <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                    <span className="text-gray-700">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -194,13 +194,13 @@ export default function ToolDetailPage({ params }: Props) {
             {alternatives.length > 0 && (
               <div className="animate-fadeInUp-delay-2">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+                  <h2 className="text-xl font-bold text-gray-900 flex items-center gap-3">
                     <span className="block w-1 h-6 rounded-full bg-cyan-500 flex-shrink-0" />
                     {tool.name}の代替ツール
                   </h2>
                   <Link
                     href={`/alternatives/${tool.slug}`}
-                    className="text-sm font-medium text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 flex items-center gap-1"
+                    className="text-sm font-medium text-cyan-600 hover:text-cyan-700 flex items-center gap-1"
                   >
                     すべて見る
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -215,11 +215,11 @@ export default function ToolDetailPage({ params }: Props) {
             {/* Alternative Of */}
             {alternativeOf.length > 0 && (
               <div className="animate-fadeInUp-delay-3">
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+                <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-3">
                   <span className="block w-1 h-6 rounded-full bg-cyan-500 flex-shrink-0" />
                   {tool.name}が代替となるツール
                 </h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                <p className="text-gray-600 mb-4 text-sm">
                   以下のツールの代替として{tool.name}が挙げられています
                 </p>
                 <ToolGrid tools={alternativeOf} />
@@ -230,14 +230,14 @@ export default function ToolDetailPage({ params }: Props) {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Pricing */}
-            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 animate-fadeInUp">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 animate-fadeInUp">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <DollarSign className="w-5 h-5 text-cyan-500" />
                 料金プラン
               </h3>
               <div className="space-y-3">
                 <PricingBadge pricing={tool.pricing} size="md" />
-                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-sm text-gray-700 leading-relaxed">
                   {tool.pricingDetail}
                 </p>
               </div>
@@ -253,8 +253,8 @@ export default function ToolDetailPage({ params }: Props) {
             </div>
 
             {/* Official site */}
-            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 animate-fadeInUp-delay-1">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 animate-fadeInUp-delay-1">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <Globe className="w-5 h-5 text-cyan-500" />
                 公式情報
               </h3>
@@ -262,7 +262,7 @@ export default function ToolDetailPage({ params }: Props) {
                 href={tool.officialUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+                className="flex items-center gap-3 text-sm text-gray-600 hover:text-cyan-600 transition-colors"
               >
                 <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -272,8 +272,8 @@ export default function ToolDetailPage({ params }: Props) {
             </div>
 
             {/* Disclosure */}
-            <div className="bg-amber-50 dark:bg-amber-900/10 rounded-2xl border border-amber-200 dark:border-amber-900/30 p-4 animate-fadeInUp-delay-2">
-              <p className="text-xs text-amber-800 dark:text-amber-400 leading-relaxed">
+            <div className="bg-amber-50 rounded-2xl border border-amber-200 p-4 animate-fadeInUp-delay-2">
+              <p className="text-xs text-amber-800 leading-relaxed">
                 ※ 「詳細・購入はこちら」はアフィリエイトリンクです。購入された場合、当サイトに報酬が発生することがありますが、掲載内容に影響はありません。
               </p>
             </div>

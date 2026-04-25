@@ -96,8 +96,8 @@ export default function CategoryPage({ params }: Props) {
         </div>
 
         {toolsWithAlts.length > 0 && (
-          <div className="mt-12 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8 animate-fadeInUp-delay-3">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <div className="mt-12 bg-white rounded-2xl border border-gray-200 p-6 md:p-8 animate-fadeInUp-delay-3">
+            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
               <span className="block w-1 h-6 rounded-full bg-cyan-500 flex-shrink-0" />
               このカテゴリの代替候補
             </h2>
@@ -106,12 +106,12 @@ export default function CategoryPage({ params }: Props) {
                 <Link
                   key={tool.slug}
                   href={`/alternatives/${tool.slug}`}
-                  className="flex items-center justify-between p-4 rounded-xl bg-cyan-50 dark:bg-cyan-900/20 hover:bg-cyan-100 dark:hover:bg-cyan-900/40 border border-cyan-100 dark:border-cyan-900/30 transition-colors group"
+                  className="flex items-center justify-between p-4 rounded-xl bg-cyan-50 hover:bg-cyan-100 border border-cyan-100 transition-colors group"
                 >
-                  <span className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                  <span className="text-sm font-medium text-gray-900 group-hover:text-cyan-600 transition-colors">
                     {tool.name}の代替を探す
                   </span>
-                  <span className="flex-shrink-0 inline-flex items-center gap-1 text-xs text-cyan-600 dark:text-cyan-400 font-medium">
+                  <span className="flex-shrink-0 inline-flex items-center gap-1 text-xs text-cyan-600 font-medium">
                     {count}件
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

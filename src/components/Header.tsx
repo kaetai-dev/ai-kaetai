@@ -42,8 +42,8 @@ export default function Header() {
     <header
       className={`sticky top-0 z-50 transition-all duration-200 ${
         scrolled
-          ? 'bg-white/90 dark:bg-gray-950/90 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-gray-800'
-          : 'bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800'
+          ? 'bg-white/90950/90 backdrop-blur-md shadow-sm border-b border-gray-200800'
+          : 'bg-white950 border-b border-gray-200800'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,7 +60,7 @@ export default function Header() {
                 <path d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+            <span className="text-xl font-bold text-gray-900 tracking-tight">
               AI Kaetai
             </span>
           </Link>
@@ -69,19 +69,19 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-6">
             <Link
               href="/"
-              className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="text-sm font-medium text-gray-600300 hover:text-indigo-600 transition-colors"
             >
               ホーム
             </Link>
             <Link
               href="/categories/writing"
-              className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="text-sm font-medium text-gray-600300 hover:text-indigo-600 transition-colors"
             >
               カテゴリ
             </Link>
             <Link
               href="/tools/cursor"
-              className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="text-sm font-medium text-gray-600300 hover:text-indigo-600 transition-colors"
             >
               新着ツール
             </Link>
@@ -93,7 +93,7 @@ export default function Header() {
             <button
               onClick={toggleDark}
               aria-label={isDark ? 'ライトモードに切り替え' : 'ダークモードに切り替え'}
-              className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-lg text-gray-500400 hover:bg-gray-100 transition-colors"
             >
               {isDark ? (
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -120,7 +120,7 @@ export default function Header() {
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="メニューを開く"
-              className="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="md:hidden p-2 rounded-lg text-gray-500400 hover:bg-gray-100 transition-colors"
             >
               {menuOpen ? (
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -138,26 +138,26 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+        <div className="md:hidden border-t border-gray-200800 bg-white950">
           <nav className="px-4 py-3 space-y-1">
             <Link
               href="/"
               onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700300 hover:bg-gray-100 transition-colors"
             >
               ホーム
             </Link>
             <Link
               href="/categories/writing"
               onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700300 hover:bg-gray-100 transition-colors"
             >
               カテゴリ
             </Link>
             <Link
               href="/tools/cursor"
               onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700300 hover:bg-gray-100 transition-colors"
             >
               新着ツール
             </Link>

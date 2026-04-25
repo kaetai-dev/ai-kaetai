@@ -114,27 +114,27 @@ export default function AlternativesPage({ params }: Props) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
         {/* Original Tool Card */}
-        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8 animate-fadeInUp">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+        <div className="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 animate-fadeInUp">
+          <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-3">
             <span className="block w-1 h-6 rounded-full bg-cyan-500 flex-shrink-0" />
             代替を探しているツール
           </h2>
           <div className="flex items-start justify-between gap-4 flex-wrap">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
                 <ToolFaviconIcon officialUrl={tool.officialUrl} name={tool.name} imgClassName="w-8 h-8 object-contain rounded-lg" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{tool.name}</h3>
-                <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm max-w-xl leading-relaxed">
+                <h3 className="text-xl font-bold text-gray-900">{tool.name}</h3>
+                <p className="mt-1 text-gray-600 text-sm max-w-xl leading-relaxed">
                   {tool.shortDescription}
                 </p>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center rounded-full bg-cyan-50 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 text-xs font-medium px-2.5 py-1">
+                  <span className="inline-flex items-center rounded-full bg-cyan-50 text-cyan-700 text-xs font-medium px-2.5 py-1">
                     {tool.category}
                   </span>
                   <PricingBadge pricing={tool.pricing} />
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                  <span className="text-xs text-gray-500">
                     {pricingLabels[tool.pricing]} ・ {tool.pricingDetail.split('。')[0]}
                   </span>
                 </div>
@@ -143,7 +143,7 @@ export default function AlternativesPage({ params }: Props) {
             <div className="flex flex-col gap-2 flex-shrink-0">
               <Link
                 href={`/tools/${tool.slug}`}
-                className="inline-flex items-center justify-center gap-1.5 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 transition-colors"
+                className="inline-flex items-center justify-center gap-1.5 bg-white hover:bg-gray-50 text-gray-700 text-sm font-medium px-4 py-2 rounded-lg border border-gray-200 transition-colors"
               >
                 詳細を見る
               </Link>
@@ -165,7 +165,7 @@ export default function AlternativesPage({ params }: Props) {
 
         {/* Alternatives Grid */}
         <div className="mt-10 animate-fadeInUp-delay-1">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
             <span className="block w-1 h-8 rounded-full bg-cyan-500 flex-shrink-0" />
             {tool.name}の代替ツール一覧
           </h2>
@@ -173,7 +173,7 @@ export default function AlternativesPage({ params }: Props) {
             <ToolGrid tools={alternatives} />
           ) : (
             <div className="text-center py-16">
-              <p className="text-gray-500 dark:text-gray-400">
+              <p className="text-gray-500">
                 現在、{tool.name}の代替ツール情報を準備中です。
               </p>
             </div>
@@ -181,12 +181,12 @@ export default function AlternativesPage({ params }: Props) {
         </div>
 
         {/* SEO Text */}
-        <div className="mt-12 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8 animate-fadeInUp-delay-2">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+        <div className="mt-12 bg-white rounded-2xl border border-gray-200 p-6 md:p-8 animate-fadeInUp-delay-2">
+          <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-3">
             <span className="block w-1 h-6 rounded-full bg-cyan-500 flex-shrink-0" />
             {tool.name}の代替を探す理由
           </h2>
-          <div className="prose prose-gray dark:prose-invert max-w-none text-sm leading-relaxed text-gray-700 dark:text-gray-300 space-y-3">
+          <div className="prose prose-gray max-w-none text-sm leading-relaxed text-gray-700 space-y-3">
             <p>
               {tool.name}は{tool.category}の中でも人気の高いツールですが、料金プランや機能の制限、
               または特定のユースケースへの適合性によって、より適した代替ツールが存在する場合があります。

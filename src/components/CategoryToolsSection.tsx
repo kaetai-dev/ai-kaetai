@@ -29,7 +29,7 @@ export default function CategoryToolsSection({ tools, categoryName, alternativeC
       </div>
       <div className="mt-6">
         <div className="flex items-center justify-between mb-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-gray-500">
             {filtered.length}件のツールが見つかりました
           </p>
         </div>

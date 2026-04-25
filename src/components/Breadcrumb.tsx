@@ -27,12 +27,12 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
           {item.href ? (
             <Link
               href={item.href}
-              className="text-sm text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="text-sm text-gray-500 hover:text-indigo-600 transition-colors"
             >
               {item.label}
             </Link>
           ) : (
-            <span className="text-sm text-gray-900 dark:text-white font-medium" aria-current="page">
+            <span className="text-sm text-gray-900 font-medium" aria-current="page">
               {item.label}
             </span>
           )}

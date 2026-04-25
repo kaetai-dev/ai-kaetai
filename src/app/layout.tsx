@@ -58,22 +58,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta name="impact-site-verification" content="079ea3f9-b640-4b57-becf-6130d1165945" />
         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var stored = localStorage.getItem('theme');
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  if (stored === 'dark' || (!stored && prefersDark)) {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
+          dangerouslySetInnerHTML={{ __html: "" }} />
       </head>
-      <body className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased">
+      <body className="bg-white text-gray-900 antialiased">
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

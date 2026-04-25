@@ -8,15 +8,15 @@ interface PricingBadgeProps {
 const pricingConfig = {
   free: {
     label: '無料',
-    className: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
+    className: 'bg-green-100 text-green-800',
   },
   freemium: {
     label: 'フリーミアム',
-    className: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400',
+    className: 'bg-blue-100 text-blue-800',
   },
   paid: {
     label: '有料',
-    className: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
+    className: 'bg-orange-100 text-orange-800',
   },
 };
 
