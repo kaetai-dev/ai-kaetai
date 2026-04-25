@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getAllTools, getAllCategories } from '@/lib/data';
+import { getAllWorkflows } from '@/lib/workflows';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ai-kaetai.com';
 
@@ -43,5 +44,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticPages, ...categoryPages, ...toolPages, ...alternativePages];
+  const workflows = getAllWorkflows();
+
+  const workflowListPage: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/workflows`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+  ];
+
+  const workflowPages: MetadataRoute.Sitemap = workflows.map((wf) => ({
+    url: `${baseUrl}/workflows/${wf.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...workflowListPage, ...categoryPages, ...toolPages, ...alternativePages, ...workflowPages];
 }
