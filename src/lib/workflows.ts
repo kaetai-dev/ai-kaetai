@@ -1,0 +1,258 @@
+import { Workflow } from '@/types';
+
+export const workflows: Workflow[] = [
+  {
+    id: 'wf-1',
+    title: 'YouTubeの動画を自動で作りたい',
+    slug: 'youtube-video-auto-create',
+    shortTitle: 'YouTube動画自動作成',
+    description: 'ChatGPTで台本を作り、ElevenLabsでナレーション、InVideo AIで映像を自動生成。1本45分、月4,500円でYouTube動画が完成します。',
+    timeEstimate: '1本あたり約45分（慣れれば30分）',
+    monthlyCost: '$30/月',
+    monthlyCostJPY: '約4,500円',
+    category: '動画',
+    difficulty: 'beginner',
+    steps: [
+      { step: 1, action: '企画・台本を作る', tool: 'ChatGPT', cost: '無料', description: 'テーマを入力するだけで台本が出てくる', nextHint: 'この台本テキストをStep 2のElevenLabsに貼り付ける' },
+      { step: 2, action: 'ナレーション音声を作る', tool: 'ElevenLabs', cost: '$5/月〜', description: 'テキストを貼るだけで人間そっくりの声になる', nextHint: '生成した音声mp3をStep 3のInVideoに読み込ませる' },
+      { step: 3, action: '映像を自動生成する', tool: 'InVideo AI', cost: '$25/月', description: '台本を入れると映像・字幕・BGM全部入りの動画ができる', nextHint: '書き出した動画をダウンロードしてStep 4へ' },
+      { step: 4, action: 'サムネイルを作る', tool: 'Canva', cost: '無料', description: 'テンプレを選んで文字を変えるだけ', nextHint: 'サムネイル画像を保存してStep 5で一緒にアップロード' },
+      { step: 5, action: '投稿する', tool: 'YouTube Studio', cost: '無料', description: 'タイトル・説明文もStep1のChatGPTで作れる' },
+    ],
+    freeAlternatives: [
+      { original: 'ElevenLabs', alternative: 'VOICEVOX', note: '日本語対応・完全無料' },
+      { original: 'InVideo AI', alternative: 'CapCut', note: '無料・手動編集だが初心者でも使いやすい' },
+    ],
+    tags: ['YouTube', '動画作成', '自動化', 'AI動画', 'ナレーション'],
+    relatedToolSlugs: ['chatgpt', 'elevenlabs', 'invideo', 'canva'],
+  },
+  {
+    id: 'wf-2',
+    title: '顔出しなしでYouTubeチャンネルを運営したい',
+    slug: 'faceless-youtube-channel',
+    shortTitle: '顔出しなしYouTube',
+    description: 'TubeBuddyでニッチを分析し、Claudeで台本、ElevenLabsで音声、Pictoryで映像を自動生成。顔出し不要で月5,000円からYouTubeチャンネルを運営できます。',
+    timeEstimate: '1本あたり約60分',
+    monthlyCost: '$33/月',
+    monthlyCostJPY: '約5,000円',
+    category: '動画',
+    difficulty: 'beginner',
+    steps: [
+      { step: 1, action: 'ニッチを決める', tool: 'TubeBuddy（無料版）', cost: '無料', description: 'どんなジャンルが伸びてるか数字で見れる' },
+      { step: 2, action: '台本を作る', tool: 'Claude', cost: '無料', description: 'シリーズもので一貫性のある台本が得意' },
+      { step: 3, action: 'AI音声を作る', tool: 'ElevenLabs', cost: '$5/月〜', description: '自分の声を録音しなくてOK' },
+      { step: 4, action: '映像を自動生成する', tool: 'Pictory', cost: '$19/月', description: '台本+音声を入れると素材映像を自動で当ててくれる' },
+      { step: 5, action: 'ショート動画も量産する', tool: 'OpusClip', cost: '$9/月', description: '長い動画から短い動画を自動で切り出してくれる' },
+    ],
+    freeAlternatives: [
+      { original: 'Pictory', alternative: 'CapCut + Pexels', note: '無料素材を手動で当てる' },
+      { original: 'OpusClip', alternative: 'CapCut', note: 'リサイズ機能で手動カット' },
+    ],
+    tags: ['YouTube', '顔出しなし', 'フェイスレス', '動画', '自動化'],
+    relatedToolSlugs: ['claude', 'elevenlabs', 'pictory', 'opusclip'],
+  },
+  {
+    id: 'wf-3',
+    title: 'TikTok/リール用のショート動画を量産したい',
+    slug: 'tiktok-reels-short-video',
+    shortTitle: 'ショート動画量産',
+    description: 'ChatGPTでネタ出し、AutoShorts.aiで自動生成、CapCutで字幕調整、Bufferで全SNSに一括投稿。1本15分、月2,900円でショート動画を量産できます。',
+    timeEstimate: '1本あたり約15分',
+    monthlyCost: '$19/月',
+    monthlyCostJPY: '約2,900円',
+    category: '動画',
+    difficulty: 'beginner',
+    steps: [
+      { step: 1, action: 'ネタ・台本を作る', tool: 'ChatGPT', cost: '無料', description: '「バズるショート動画のネタ出して」でOK' },
+      { step: 2, action: '動画を自動生成する', tool: 'AutoShorts.ai', cost: '$19/月', description: 'テーマを入れるだけで縦動画が完成する' },
+      { step: 3, action: '字幕を調整する', tool: 'CapCut', cost: '無料', description: '自動字幕＋おしゃれなテロップが簡単に作れる' },
+      { step: 4, action: '全SNSに一括投稿する', tool: 'Buffer', cost: '無料〜', description: 'TikTok・Instagram・YouTubeに同時投稿できる' },
+    ],
+    freeAlternatives: [
+      { original: 'AutoShorts.ai', alternative: 'CapCut', note: 'テンプレート機能で手動作成' },
+    ],
+    tags: ['TikTok', 'Reels', 'ショート動画', 'SNS', '量産'],
+    relatedToolSlugs: ['chatgpt', 'autoshorts', 'capcut', 'buffer'],
+  },
+  {
+    id: 'wf-4',
+    title: 'しゃべるAIアバターで動画を作りたい',
+    slug: 'ai-avatar-video',
+    shortTitle: 'AIアバター動画',
+    description: 'ChatGPTで台本を作り、HeyGenでAIアバターが喋る動画を生成。CapCutで仕上げれば、20分で本格的なアバター動画が完成します。',
+    timeEstimate: '1本あたり約20分',
+    monthlyCost: '$29/月',
+    monthlyCostJPY: '約4,400円',
+    category: '動画',
+    difficulty: 'beginner',
+    steps: [
+      { step: 1, action: '台本を作る', tool: 'ChatGPT', cost: '無料', description: '話す内容をテキストで準備するだけ' },
+      { step: 2, action: 'アバター動画を生成する', tool: 'HeyGen', cost: '$29/月', description: 'テキストを入れるとAIの人物が喋ってくれる' },
+      { step: 3, action: '字幕・編集する', tool: 'CapCut', cost: '無料', description: 'テロップやBGMの追加がドラッグ操作でできる' },
+      { step: 4, action: 'サムネイルを作る', tool: 'Canva', cost: '無料', description: 'テンプレートを選ぶだけ' },
+    ],
+    freeAlternatives: [
+      { original: 'HeyGen', alternative: 'D-ID', note: '無料枠あり・5分/月' },
+    ],
+    tags: ['AIアバター', 'HeyGen', '動画', '喋る動画', 'プレゼン'],
+    relatedToolSlugs: ['chatgpt', 'heygen', 'capcut', 'canva'],
+  },
+  {
+    id: 'wf-5',
+    title: '動画に自動で字幕・テロップを入れたい',
+    slug: 'auto-subtitle-video',
+    shortTitle: '自動字幕・テロップ',
+    description: 'Descriptに動画をアップロードするだけで音声が自動文字起こしされ、テキスト編集=動画編集という革命的な体験。10分で字幕付き動画が完成します。',
+    timeEstimate: '1本あたり約10分',
+    monthlyCost: '$24/月',
+    monthlyCostJPY: '約3,600円',
+    category: '動画',
+    difficulty: 'beginner',
+    steps: [
+      { step: 1, action: '動画をアップロードする', tool: 'Descript', cost: '$24/月', description: '動画を入れると音声が全部テキストになる' },
+      { step: 2, action: 'テキストを編集する=動画が編集される', tool: 'Descript', cost: '（同上）', description: '文章を消すと動画もカットされる。革命的に簡単' },
+      { step: 3, action: '字幕スタイルを選ぶ', tool: 'Descript', cost: '（同上）', description: 'おしゃれな字幕テンプレートが用意されてる' },
+    ],
+    freeAlternatives: [
+      { original: 'Descript', alternative: 'CapCut', note: '自動字幕機能が無料で使える' },
+    ],
+    tags: ['字幕', 'テロップ', '動画編集', '自動字幕', 'Descript'],
+    relatedToolSlugs: ['descript', 'capcut'],
+  },
+  {
+    id: 'wf-6',
+    title: 'Instagramの投稿を自動で作りたい',
+    slug: 'instagram-auto-post',
+    shortTitle: 'Instagram自動投稿',
+    description: 'ChatGPTで1週間分の投稿案を生成し、Canva AIで画像を作り、Bufferで予約投稿。30分で1週間分のInstagram投稿が完成します。',
+    timeEstimate: '1週間分を約30分で作成',
+    monthlyCost: '無料〜$13/月',
+    monthlyCostJPY: '無料〜約2,000円',
+    category: 'SNS運用',
+    difficulty: 'beginner',
+    steps: [
+      { step: 1, action: '投稿テーマ・文章を作る', tool: 'ChatGPT', cost: '無料', description: '「1週間分の投稿案を作って」で7本出てくる' },
+      { step: 2, action: '画像を作る', tool: 'Canva AI', cost: '無料〜', description: '「こんな画像を作って」と指示すればデザインが生成される' },
+      { step: 3, action: 'ハッシュタグを生成する', tool: 'ChatGPT', cost: '無料', description: 'ジャンルを伝えるだけで最適なタグが出てくる' },
+      { step: 4, action: '予約投稿する', tool: 'Buffer / Meta Business Suite', cost: '無料', description: '日時を設定しておけば自動で投稿される' },
+    ],
+    freeAlternatives: [
+      { original: 'Canva Pro', alternative: 'Canva無料版', note: '全ステップ無料で完結可能' },
+    ],
+    tags: ['Instagram', 'SNS', '自動投稿', 'Canva', '画像生成'],
+    relatedToolSlugs: ['chatgpt', 'canva', 'buffer'],
+  },
+  {
+    id: 'wf-7',
+    title: 'SEOに強いブログ記事を自動で書きたい',
+    slug: 'seo-blog-auto-write',
+    shortTitle: 'SEOブログ自動執筆',
+    description: 'ラッコキーワードで需要を調べ、ChatGPTで構成、Claudeで本文執筆、Canvaでアイキャッチ。30分でSEOに強いブログ記事が完成します。',
+    timeEstimate: '1記事あたり約30分',
+    monthlyCost: '無料〜$20/月',
+    monthlyCostJPY: '無料〜約3,000円',
+    category: 'ブログ・ライティング',
+    difficulty: 'beginner',
+    steps: [
+      { step: 1, action: 'キーワードを調べる', tool: 'ラッコキーワード', cost: '無料', description: '検索されてる言葉が一覧で見れる' },
+      { step: 2, action: '記事の構成を作る', tool: 'ChatGPT / Claude', cost: '無料', description: '「この検索キーワードで記事の見出し案を作って」でOK' },
+      { step: 3, action: '記事本文を書く', tool: 'Claude', cost: '無料〜$20/月', description: '見出しごとに本文を書かせる。1記事10分で完成' },
+      { step: 4, action: 'アイキャッチ画像を作る', tool: 'Canva AI', cost: '無料', description: 'ブログに貼る画像をテンプレートから作成' },
+      { step: 5, action: '投稿する', tool: 'WordPress / note.com', cost: '無料', description: 'コピペして公開するだけ' },
+    ],
+    freeAlternatives: [
+      { original: 'Claude Pro', alternative: 'Claude無料版 / ChatGPT', note: '全ステップ無料で完結可能' },
+    ],
+    tags: ['SEO', 'ブログ', 'ライティング', '記事作成', '自動化'],
+    relatedToolSlugs: ['chatgpt', 'claude', 'canva'],
+  },
+  {
+    id: 'wf-8',
+    title: 'AIでイラストや画像を生成して販売したい',
+    slug: 'ai-image-generate-sell',
+    shortTitle: 'AI画像生成・販売',
+    description: 'Adobe Stockで売れ筋を調べ、Midjourneyで画像生成、Canvaで補正して販売プラットフォームに出品。1枚5分、月1,500円で画像販売ビジネスを始められます。',
+    timeEstimate: '1枚あたり約5分（量産可能）',
+    monthlyCost: '$10/月',
+    monthlyCostJPY: '約1,500円',
+    category: '画像・デザイン',
+    difficulty: 'beginner',
+    steps: [
+      { step: 1, action: '売れるジャンルを調べる', tool: 'Adobe Stock / PIXTA', cost: '無料（閲覧）', description: 'どんな画像が売れてるか検索して傾向を掴む' },
+      { step: 2, action: '画像を生成する', tool: 'Midjourney', cost: '$10/月', description: '「夕日のビーチ写真風」と書くだけで画像ができる' },
+      { step: 3, action: '画像を補正する', tool: 'Canva / Photopea', cost: '無料', description: 'サイズ調整やテキスト追加' },
+      { step: 4, action: '販売プラットフォームに出品する', tool: 'Adobe Stock / PIXTA / BOOTH', cost: '無料', description: 'アップロードして審査通れば販売開始' },
+    ],
+    freeAlternatives: [
+      { original: 'Midjourney', alternative: 'Microsoft Copilot', note: 'DALL-E 3ベース・無料枠あり' },
+    ],
+    tags: ['画像生成', 'AI画像', '販売', 'ストックフォト', 'Midjourney'],
+    relatedToolSlugs: ['midjourney', 'canva'],
+  },
+  {
+    id: 'wf-9',
+    title: '自分の声を使わずにナレーションを作りたい',
+    slug: 'ai-narration-no-voice',
+    shortTitle: 'AIナレーション作成',
+    description: 'ChatGPTで原稿を作り、ElevenLabsでAI音声に変換するだけ。5分でプロ品質のナレーションが完成。月750円から始められます。',
+    timeEstimate: '1本あたり約5分',
+    monthlyCost: '$5/月',
+    monthlyCostJPY: '約750円',
+    category: '音声・音楽',
+    difficulty: 'beginner',
+    steps: [
+      { step: 1, action: '話す内容をテキストで書く', tool: 'ChatGPT / 自分で書く', cost: '無料', description: '原稿を用意するだけ' },
+      { step: 2, action: 'AI音声に変換する', tool: 'ElevenLabs', cost: '$5/月〜', description: '男性・女性・言語を選んでテキストを貼るだけ' },
+      { step: 3, action: '音声ファイルをダウンロードする', tool: 'ElevenLabs', cost: '（同上）', description: 'mp3でダウンロードして動画に合わせる' },
+    ],
+    freeAlternatives: [
+      { original: 'ElevenLabs', alternative: 'VOICEVOX', note: '日本語特化・完全無料・商用利用可' },
+    ],
+    tags: ['ナレーション', 'AI音声', 'ElevenLabs', '声なし', '音声合成'],
+    relatedToolSlugs: ['chatgpt', 'elevenlabs'],
+  },
+  {
+    id: 'wf-10',
+    title: '会議の議事録を自動で作りたい',
+    slug: 'meeting-minutes-auto',
+    shortTitle: '会議議事録自動作成',
+    description: 'ZoomやGoogle Meetの録画をtl;dvで文字起こしし、ChatGPTで議事録形式にまとめる。会議後5分で完成、全ステップ無料です。',
+    timeEstimate: '会議後5分で完成',
+    monthlyCost: '無料',
+    monthlyCostJPY: '無料',
+    category: 'ビジネス効率化',
+    difficulty: 'beginner',
+    steps: [
+      { step: 1, action: '会議を録音する', tool: 'Zoom / Google Meet', cost: '無料', description: 'いつもの会議をそのまま録画するだけ' },
+      { step: 2, action: '文字起こしする', tool: 'tl;dv / Notta', cost: '無料〜', description: '録画データを入れると全部テキストになる' },
+      { step: 3, action: '要約・議事録にまとめる', tool: 'ChatGPT / Claude', cost: '無料', description: '「この文字起こしを議事録形式にまとめて」で完成' },
+    ],
+    freeAlternatives: [
+      { original: '全ステップ', alternative: '全ツール無料版', note: '全ステップ無料で完結可能' },
+    ],
+    tags: ['議事録', '会議', '文字起こし', '自動化', 'ビジネス'],
+    relatedToolSlugs: ['chatgpt', 'claude'],
+  },
+];
+
+export const workflowCategories = [
+  { name: '動画', count: 5, icon: 'Video' },
+  { name: 'SNS運用', count: 1, icon: 'Share2' },
+  { name: 'ブログ・ライティング', count: 1, icon: 'PenTool' },
+  { name: '画像・デザイン', count: 1, icon: 'Palette' },
+  { name: '音声・音楽', count: 1, icon: 'Music' },
+  { name: 'ビジネス効率化', count: 1, icon: 'Briefcase' },
+];
+
+export function getAllWorkflows(): Workflow[] {
+  return workflows;
+}
+
+export function getWorkflowBySlug(slug: string): Workflow | undefined {
+  return workflows.find((wf) => wf.slug === slug);
+}
+
+export function getWorkflowsByCategory(category: string): Workflow[] {
+  return workflows.filter((wf) => wf.category === category);
+}
+

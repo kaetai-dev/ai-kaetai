@@ -45,6 +45,8 @@ const config: Config = {
         'fadeInUp-delay-1': 'fadeInUp 0.5s ease-out 0.1s both',
         'fadeInUp-delay-2': 'fadeInUp 0.5s ease-out 0.2s both',
         'fadeInUp-delay-3': 'fadeInUp 0.5s ease-out 0.3s both',
+        'pulse-slow': 'pulseSlow 3s ease-in-out infinite',
+        'step-line': 'stepLine 0.6s ease-out both',
       },
       keyframes: {
         fadeIn: {
@@ -58,6 +60,14 @@ const config: Config = {
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        pulseSlow: {
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '0.8' },
+        },
+        stepLine: {
+          '0%': { height: '0%' },
+          '100%': { height: '100%' },
         },
       },
     },

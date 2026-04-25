@@ -9,14 +9,60 @@ interface HeroSearchProps {
   tools: Tool[];
 }
 
+const PLACEHOLDER_TEXTS = [
+  'YouTubeの動画を自動で作りたい',
+  'ブログ記事を自動で書きたい',
+  '顔出しなしで稼ぎたい',
+  'AIでナレーションを作りたい',
+  'TikTokの動画を量産したい',
+  'AIで画像を売りたい',
+  'Instagram投稿を自動化したい',
+  '議事録を自動で作りたい',
+];
+
 export default function HeroSearch({ tools }: HeroSearchProps) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Tool[]>([]);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+  const [placeholderText, setPlaceholderText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
+  // Typewriter effect for placeholder
+  useEffect(() => {
+    if (query) return; // Stop animation when user is typing
+
+    const target = PLACEHOLDER_TEXTS[placeholderIndex];
+    let timeout: NodeJS.Timeout;
+
+    if (isTyping) {
+      if (placeholderText.length < target.length) {
+        timeout = setTimeout(() => {
+          setPlaceholderText(target.slice(0, placeholderText.length + 1));
+        }, 60);
+      } else {
+        // Pause at full text, then start deleting
+        timeout = setTimeout(() => setIsTyping(false), 2000);
+      }
+    } else {
+      if (placeholderText.length > 0) {
+        timeout = setTimeout(() => {
+          setPlaceholderText(placeholderText.slice(0, -1));
+        }, 30);
+      } else {
+        // Move to next phrase
+        setPlaceholderIndex((i) => (i + 1) % PLACEHOLDER_TEXTS.length);
+        setIsTyping(true);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [placeholderText, isTyping, placeholderIndex, query]);
+
+  // Tool search
   useEffect(() => {
     if (!query.trim()) {
       setResults([]);
@@ -36,6 +82,7 @@ export default function HeroSearch({ tools }: HeroSearchProps) {
     setActiveIndex(-1);
   }, [query, tools]);
 
+  // Click outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
@@ -69,7 +116,7 @@ export default function HeroSearch({ tools }: HeroSearchProps) {
 
   return (
     <div ref={containerRef} className="relative w-full max-w-2xl mx-auto">
-      <div className="flex items-center bg-white rounded-xl shadow-lg px-4 py-3">
+      <div className="flex items-center bg-white rounded-xl shadow-lg px-4 py-3 border border-gray-100">
         <Search className="w-5 h-5 text-gray-400 flex-shrink-0 mr-3" />
         <input
           type="text"
@@ -77,7 +124,7 @@ export default function HeroSearch({ tools }: HeroSearchProps) {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           onFocus={() => results.length > 0 && setOpen(true)}
-          placeholder="AIツールを検索... (例: ChatGPT, Midjourney)"
+          placeholder={query ? '' : placeholderText + '|'}
           className="flex-1 bg-transparent text-gray-900 placeholder-gray-400 text-sm focus:outline-none"
         />
         {query && (

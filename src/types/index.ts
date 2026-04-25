@@ -35,3 +35,35 @@ export interface Alternative {
 export interface ToolWithAlternatives extends Tool {
   alternatives: Tool[];
 }
+
+export interface WorkflowStep {
+  step: number;
+  action: string;
+  tool: string;
+  cost: string;
+  description: string;
+  nextHint?: string;
+}
+
+export interface WorkflowAlternative {
+  original: string;
+  alternative: string;
+  note: string;
+}
+
+export interface Workflow {
+  id: string;
+  title: string;
+  slug: string;
+  shortTitle: string;
+  description: string;
+  timeEstimate: string;
+  monthlyCost: string;
+  monthlyCostJPY: string;
+  category: string;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  steps: WorkflowStep[];
+  freeAlternatives: WorkflowAlternative[];
+  tags: string[];
+  relatedToolSlugs: string[];
+}

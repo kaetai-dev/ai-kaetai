@@ -9,6 +9,7 @@ import {
 import CategoryCard from '@/components/CategoryCard';
 import ToolGrid from '@/components/ToolGrid';
 import HeroSearch from '@/components/HeroSearch';
+import { getAllWorkflows } from '@/lib/workflows';
 
 export const metadata: Metadata = {
   title: 'AI Kaetai - AIツールの代替を日本語で探す',
@@ -29,6 +30,7 @@ export default function HomePage() {
   const allTools = getAllTools();
   const categories = getAllCategories();
   const totalAlternatives = getTotalAlternativesCount();
+  const workflows = getAllWorkflows();
 
   const latestTools = [...allTools]
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
@@ -151,6 +153,55 @@ export default function HomePage() {
       <section className="bg-gray-50 dark:bg-gray-900 py-8 border-b border-gray-100 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <HeroSearch tools={allTools} />
+        </div>
+      </section>
+
+
+      {/* Workflow Section */}
+      <section className="bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <p className="text-sm text-indigo-600 font-medium mb-1">WORKFLOWS</p>
+            <h2 className="text-2xl font-bold text-gray-900">AIで、何がしたい？</h2>
+            <p className="text-sm text-gray-500 mt-1">やりたいことから逆引き。必要なツール・手順・費用がわかる。</p>
+          </div>
+          <Link href="/workflows" className="hidden sm:inline-flex items-center gap-1 text-sm text-indigo-600 hover:text-indigo-800 font-medium transition">
+            すべて見る
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {workflows.slice(0, 6).map((wf, i) => (
+            <Link
+              key={wf.slug}
+              href={`/workflows/${wf.slug}`}
+              className={`group relative bg-white border border-gray-100 rounded-2xl p-5 hover:border-indigo-200 hover:shadow-lg transition-all duration-300 ${
+                i === 0 ? 'md:col-span-2 md:row-span-2' : ''
+              }`}
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">{wf.category}</span>
+                <span className="text-xs text-gray-400">{wf.steps.length}ステップ</span>
+              </div>
+              <h3 className={`font-bold text-gray-900 group-hover:text-indigo-600 transition-colors mb-2 ${i === 0 ? 'text-xl' : 'text-base'}`}>
+                {wf.title}
+              </h3>
+              <p className={`text-gray-500 leading-relaxed mb-4 ${i === 0 ? 'text-sm' : 'text-xs line-clamp-2'}`}>
+                {wf.description}
+              </p>
+              <div className="flex items-center gap-3 text-xs text-gray-500">
+                <span>⏱ {wf.timeEstimate}</span>
+                <span>💰 {wf.monthlyCostJPY}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-6 text-center sm:hidden">
+          <Link href="/workflows" className="inline-flex items-center gap-1 text-sm text-indigo-600 hover:text-indigo-800 font-medium">
+            すべてのワークフローを見る →
+          </Link>
         </div>
       </section>
 
