@@ -67,3 +67,24 @@ export interface Workflow {
   tags: string[];
   relatedToolSlugs: string[];
 }
+
+export interface ToolCombination {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  toolA: string;
+  toolASlug: string;
+  toolB: string;
+  toolBSlug: string;
+  category: string;
+  useCase: string;
+  steps: {
+    step: number;
+    action: string;
+    tool: string;
+    description: string;
+  }[];
+  benefits: string[];
+  tags: string[];
+}

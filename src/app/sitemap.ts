@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getAllTools, getAllCategories } from '@/lib/data';
 import { getAllWorkflows } from '@/lib/workflows';
+import { getAllCombinations } from '@/lib/combinations';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ai-kaetai.com';
 
@@ -62,5 +63,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...workflowListPage, ...categoryPages, ...toolPages, ...alternativePages, ...workflowPages];
+  const combos = getAllCombinations();
+
+  const comboListPage: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/combinations`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+  ];
+
+  const comboPages: MetadataRoute.Sitemap = combos.map((c) => ({
+    url: `${baseUrl}/combinations/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...workflowListPage, ...comboListPage, ...categoryPages, ...toolPages, ...alternativePages, ...workflowPages, ...comboPages];
 }
