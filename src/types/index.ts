@@ -57,6 +57,7 @@ export interface Workflow {
   slug: string;
   shortTitle: string;
   description: string;
+  longDescription: string;
   timeEstimate: string;
   monthlyCost: string;
   monthlyCostJPY: string;
