@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { getAllTools, getAllCategories } from '@/lib/data';
 import { getAllWorkflows } from '@/lib/workflows';
 import { getAllCombinations } from '@/lib/combinations';
+import { getAllComparisons } from '@/lib/comparisons';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ai-kaetai.com';
 
@@ -81,5 +82,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...workflowListPage, ...comboListPage, ...categoryPages, ...toolPages, ...alternativePages, ...workflowPages, ...comboPages];
+  const allComparisons = getAllComparisons();
+
+  const compListPage: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/comparisons`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+  ];
+
+  const compPages: MetadataRoute.Sitemap = allComparisons.map((c) => ({
+    url: `${baseUrl}/comparisons/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...workflowListPage, ...comboListPage, ...categoryPages, ...toolPages, ...alternativePages, ...workflowPages, ...comboPages, ...compListPage, ...compPages];
 }

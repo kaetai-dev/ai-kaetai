@@ -88,3 +88,27 @@ export interface ToolCombination {
   benefits: string[];
   tags: string[];
 }
+
+export interface ComparisonPoint {
+  category: string;
+  toolA: string;
+  toolB: string;
+  winner?: string;
+}
+
+export interface ToolComparison {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  toolA: string;
+  toolASlug: string;
+  toolB: string;
+  toolBSlug: string;
+  category: string;
+  points: ComparisonPoint[];
+  verdict: string;
+  toolAStrengths: string[];
+  toolBStrengths: string[];
+  tags: string[];
+}
