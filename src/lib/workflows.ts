@@ -243,16 +243,6 @@ export const workflows: Workflow[] = [
     tags: ['議事録', '会議', '文字起こし', '自動化', 'ビジネス'],
     relatedToolSlugs: ['chatgpt', 'claude'],
   },
-];
-
-export const workflowCategories = [
-  { name: '動画', count: 5, icon: 'Video' },
-  { name: 'SNS運用', count: 1, icon: 'Share2' },
-  { name: 'ブログ・ライティング', count: 1, icon: 'PenTool' },
-  { name: '画像・デザイン', count: 1, icon: 'Palette' },
-  { name: '音声・音楽', count: 1, icon: 'Music' },
-  { name: 'ビジネス効率化', count: 1, icon: 'Briefcase' },
-,
   // === Phase 2 Workflows ===
   {
     id: 'wf-11',
@@ -722,6 +712,16 @@ export const workflowCategories = [
     relatedToolSlugs: ['chatgpt', 'canva-ai'],
   }
 ];
+
+export const workflowCategories = [
+  { name: '動画', count: 5, icon: 'Video' },
+  { name: 'SNS運用', count: 4, icon: 'Share2' },
+  { name: 'ブログ・ライティング', count: 4, icon: 'PenTool' },
+  { name: '画像・デザイン', count: 3, icon: 'Palette' },
+  { name: '音声・音楽', count: 3, icon: 'Music' },
+  { name: 'ビジネス効率化', count: 11, icon: 'Briefcase' },
+];
+
 
 export function getAllWorkflows(): Workflow[] {
   return workflows;
