@@ -46,23 +46,22 @@ const FAVICON_OVERRIDES: Record<string, string> = {
 };
 
 const EXTERNAL_LINKS: Record<string, string> = {
-  'AutoShorts.ai': 'https://autoshorts.ai',
-  'Buffer': 'https://buffer.com',
-  'Canva / Photopea': 'https://canva.com',
-  'CapCut': 'https://capcut.com',
   'Instagram': 'https://instagram.com',
-  'Kindle Direct Publishing': 'https://kdp.amazon.com',
-  'Markmap': 'https://markmap.js.org',
-  'OpusClip': 'https://opus.pro',
-  'Spotify for Podcasters': 'https://podcasters.spotify.com',
-  'TubeBuddy': 'https://tubebuddy.com',
-  'YouTube Studio': 'https://studio.youtube.com',
   'WordPress / note.com': 'https://wordpress.com',
   'Zoom / Google Meet': 'https://zoom.us',
-  'tl;dv / Notta': 'https://tldv.io',
+  'YouTube Studio': 'https://studio.youtube.com',
   'YouTube等': 'https://youtube.com',
   'SNS各アプリ': 'https://twitter.com',
   '各SNSアプリ': 'https://twitter.com',
+  '各ECサイト': 'https://amazon.co.jp',
+  '各サービス': '#',
+  'テキストエディタ': '#',
+  'メール配信サービス': '#',
+  'Canva / Photopea': 'https://canva.com',
+  'Buffer / Meta Business Suite': 'https://buffer.com',
+  'Audiostock等': 'https://audiostock.jp',
+  'Adobe Stock / PIXTA': 'https://stock.adobe.com',
+  'Adobe Stock / PIXTA / BOOTH': 'https://stock.adobe.com',
 };
 
 
@@ -81,6 +80,18 @@ function getToolFavicon(toolName: string, allTools: any[]): string | null {
 }
 
 function getToolSlug(toolName: string, allTools: any[]): string | null {
+  // Normalize composite names
+  const nameMap: Record<string, string> = {
+    'TubeBuddy（無料版）': 'TubeBuddy',
+    'tl;dv / Notta': 'tl;dv',
+    'ChatGPT / Claude': 'ChatGPT',
+    'ChatGPT / 自分で書く': 'ChatGPT',
+    'Canva': 'Canva AI',
+    'Framer': 'Framer AI',
+    'note': 'NotebookLM',
+  };
+  const normalized = nameMap[toolName] || toolName;
+  toolName = normalized;
   if (FAVICON_OVERRIDES[toolName]) return null;
   const n = toolName.toLowerCase().replace(/\s+/g, '');
   const tool = allTools.find((t: any) => {
