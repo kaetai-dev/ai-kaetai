@@ -45,6 +45,27 @@ const FAVICON_OVERRIDES: Record<string, string> = {
   'DeepL': 'https://www.google.com/s2/favicons?domain=deepl.com&sz=64',
 };
 
+const EXTERNAL_LINKS: Record<string, string> = {
+  'AutoShorts.ai': 'https://autoshorts.ai',
+  'Buffer': 'https://buffer.com',
+  'Canva / Photopea': 'https://canva.com',
+  'CapCut': 'https://capcut.com',
+  'Instagram': 'https://instagram.com',
+  'Kindle Direct Publishing': 'https://kdp.amazon.com',
+  'Markmap': 'https://markmap.js.org',
+  'OpusClip': 'https://opus.pro',
+  'Spotify for Podcasters': 'https://podcasters.spotify.com',
+  'TubeBuddy': 'https://tubebuddy.com',
+  'YouTube Studio': 'https://studio.youtube.com',
+  'WordPress / note.com': 'https://wordpress.com',
+  'Zoom / Google Meet': 'https://zoom.us',
+  'tl;dv / Notta': 'https://tldv.io',
+  'YouTube等': 'https://youtube.com',
+  'SNS各アプリ': 'https://twitter.com',
+  '各SNSアプリ': 'https://twitter.com',
+};
+
+
 function getToolFavicon(toolName: string, allTools: any[]): string | null {
   if (FAVICON_OVERRIDES[toolName]) return FAVICON_OVERRIDES[toolName];
   const n = toolName.toLowerCase().replace(/\s+/g, '');
@@ -134,11 +155,14 @@ export default function WorkflowDetailPage({ params }: Props) {
           {workflow.steps.map((s) => {
             const fav = getToolFavicon(s.tool, allTools);
             const slug = getToolSlug(s.tool, allTools);
+            const extUrl = EXTERNAL_LINKS[s.tool] || null;
             return fav ? (
               <div key={s.step} className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-lg px-2.5 py-1.5">
                 <img src={fav} alt={s.tool} className="w-4 h-4 rounded" />
                 {slug ? (
-                  <Link href={'/tools/' + slug} className="text-xs font-medium text-gray-700 hover:text-blue-600 transition">{s.tool}</Link>
+                  <Link href={'/tools/' + slug} className="text-xs font-medium text-gray-700 hover:text-cyan-700 transition">{s.tool}</Link>
+                ) : extUrl ? (
+                  <a href={extUrl} target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-gray-700 hover:text-cyan-700 transition inline-flex items-center gap-0.5">{s.tool}<span className="text-[10px] opacity-40">↗</span></a>
                 ) : (
                   <span className="text-xs font-medium text-gray-700">{s.tool}</span>
                 )}
@@ -167,6 +191,7 @@ export default function WorkflowDetailPage({ params }: Props) {
           {workflow.steps.map((step, i) => {
             const fav = getToolFavicon(step.tool, allTools);
             const slug = getToolSlug(step.tool, allTools);
+            const extUrl2 = EXTERNAL_LINKS[step.tool] || null;
             return (
               <div key={step.step}>
                 <div className="border border-gray-200 rounded-xl p-4 sm:p-5 bg-white hover:border-gray-300 transition">
@@ -180,7 +205,9 @@ export default function WorkflowDetailPage({ params }: Props) {
                       <div className="flex items-center gap-1.5 mb-2">
                         {fav && <img src={fav} alt={step.tool} className="w-4 h-4 rounded" />}
                         {slug ? (
-                          <Link href={'/tools/' + slug} className="text-sm text-blue-600 hover:underline">{step.tool}</Link>
+                          <Link href={'/tools/' + slug} className="text-sm text-cyan-700 hover:underline font-medium">{step.tool}</Link>
+                        ) : extUrl2 ? (
+                          <a href={extUrl2} target="_blank" rel="noopener noreferrer" className="text-sm text-cyan-700 hover:underline font-medium inline-flex items-center gap-1">{step.tool}<svg className="w-3 h-3 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a>
                         ) : (
                           <span className="text-sm text-gray-700">{step.tool}</span>
                         )}
