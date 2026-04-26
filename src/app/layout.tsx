@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
 import Header from '@/components/Header';
+import GoogleAdScript from '@/components/ads/GoogleAdScript';
 import Footer from '@/components/Footer';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ai-kaetai.com';
@@ -61,7 +62,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: "" }} />
       </head>
       <body className="bg-white text-gray-900 antialiased">
-        <Header />
+        <GoogleAdScript />
+          <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
 

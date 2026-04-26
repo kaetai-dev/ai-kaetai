@@ -44,6 +44,7 @@ export default function Footer() {
             </p>
             <ul className="space-y-2">
               <li><Link href="/disclaimer" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">免責事項</Link></li>
+              <li><Link href="/privacy" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">プライバシーポリシー</Link></li>
             </ul>
           </div>
         </div>
