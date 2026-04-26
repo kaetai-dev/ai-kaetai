@@ -92,7 +92,12 @@ function getToolSlug(toolName: string, allTools: any[]): string | null {
   };
   const normalized = nameMap[toolName] || toolName;
   toolName = normalized;
-  if (FAVICON_OVERRIDES[toolName]) return null;
+  // Only skip matching if tool is in FAVICON_OVERRIDES AND not in data.ts
+  if (FAVICON_OVERRIDES[toolName]) {
+    const exact = allTools.find((t: any) => t.name.toLowerCase() === toolName.toLowerCase());
+    if (exact) return exact.slug;
+    return null;
+  }
   const n = toolName.toLowerCase().replace(/\s+/g, '');
   const tool = allTools.find((t: any) => {
     const tn = t.name.toLowerCase().replace(/\s+/g, '');
