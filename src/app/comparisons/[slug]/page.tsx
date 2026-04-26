@@ -87,6 +87,15 @@ export default function ComparisonDetailPage({ params }: Props) {
         </div>
       </section>
 
+      {cmp.longDescription && (
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+          <div className="border border-gray-200 rounded-md p-6">
+            <h2 className="text-lg font-semibold text-gray-900 mb-3">この比較について</h2>
+            <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">{cmp.longDescription}</p>
+          </div>
+        </section>
+      )}
+
       <hr className="max-w-4xl mx-auto border-gray-100" />
 
       {/* Comparison Table */}
