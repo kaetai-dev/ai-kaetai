@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import GoogleAdScript from '@/components/ads/GoogleAdScript';
 import Footer from '@/components/Footer';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ai-kaetai.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ai-kaetai.com';
 const gaId = process.env.NEXT_PUBLIC_GA_ID || 'G-EE7ZD8HJZV';
 
 export const metadata: Metadata = {
@@ -50,6 +50,9 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  alternates: {
+    canonical: './',
   },
 };
 
